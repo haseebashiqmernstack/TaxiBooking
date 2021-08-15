@@ -38,7 +38,8 @@ export default function Bookings()
                        <td>{ride.riderName}</td>
                        <td>{ride.isConfirm ? <><span className="badge bg-success">Riding Start</span></>:<><span className="badge bg-warning text-dark">Riding Pending</span></>}</td>
                        <td><button onClick={()=>dispatch(BookingConfirm(ride._id,{isConfirm:"true"}))} style={{margin:"0 5px"}} className="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm Ride"><CheckIcon/></button>
-                       <Link to={`/bookinginfo/${ride._id}`} style={{margin:"0 5px"}} className="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="view details"><VisibilityIcon/></Link></td>
+                       {/* <Link to={`/bookinginfo/${ride._id}`} style={{margin:"0 5px"}} className="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="view details"><VisibilityIcon/></Link></td> */}
+                       </td>
                      </tr>
                  ))
                }
