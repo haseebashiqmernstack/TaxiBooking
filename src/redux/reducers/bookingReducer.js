@@ -45,6 +45,20 @@ const bookingReducer=(state=initial,action)=>{
                                     message:'not avaliable',
                                     loading:false
                                 }
+                                case Booking.BOOKING_ACTIVATE:
+                                    return {
+                                        ...state,
+                            loading:true,
+                                    }
+                                    case Booking.BOOKING_ACTIVATE_SUCCESS:
+                                    let findBooking=state.booking.find(b=>b._id==action.payload)
+                                    let index=state.booking.findIndex(b=>b._id==action.payload)
+                                    findBooking.isConfirm="true"
+                                    state.booking[index]=findBooking    
+                                    return {
+                                        ...state,
+                                        loading:false,
+                                        }
         default:
             return state;
     }

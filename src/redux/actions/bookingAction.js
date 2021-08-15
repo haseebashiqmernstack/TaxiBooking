@@ -48,3 +48,51 @@ export const ShowBooking=()=>{
         }
     }
 }
+
+export const BookingConfirm=(id,data)=>{
+    return async (dispatch) => {
+           dispatch({
+               type:Booking.BOOKING_ACTIVATE,
+               payload:''
+           })
+ const bConfirm=apiService.bookingConfirm(id,data);
+ if(bConfirm!=null)
+ {
+     dispatch({
+         type:Booking.BOOKING_ACTIVATE_SUCCESS,
+         payload:id
+     })
+ }
+ else{
+     dispatch({
+         type:Booking.BOOKING_ACTIVATE_FAILIURE,
+         payload:''
+     })
+ }
+           
+    }
+}
+
+export const BookingCancel=(id,data)=>{
+    return async (dispatch) => {
+           dispatch({
+               type:Booking.BOOKING_DEACTIVATE,
+               payload:''
+           })
+ const bCancel=apiService.bookingCancel(id,data);
+ if(bCancel!=null)
+ {
+     dispatch({
+         type:Booking.BOOKING_DEACTIVATE_SUCCESS,
+         payload:id
+     })
+ }
+ else{
+     dispatch({
+         type:Booking.BOOKING_DEACTIVATE_FAILIURE,
+         payload:''
+     })
+ }
+           
+    }
+}

@@ -27,6 +27,9 @@ const apiService={
     bookingConfirm:async(id,data)=>{
         return await axiosInstance.patch(`/booking/rideconfirm/${id}`,{...data}).then(res=>res.data)
     },
+    bookingCancel:async(id,data)=>{
+         return await axiosInstance.patch(`/booking/ridecancel/${id}`,{...data}).then(res=>res.data)
+    },
     getBookingRideInfo:async(id)=>{
         console.log(id)
          return await axiosInstance.get(`/booking/getbookingrideinfo/${id}`).then(res=>res.data)
@@ -41,6 +44,12 @@ const apiService={
     getRiders:async()=>{
         return await axiosInstance.get('/rider/getRiders').then(res=>res.data)
     },
+    riderActive:async(id,data)=>{
+          return await axiosInstance.patch(`/rider/rideractive/${id}`,{...data}).then(res=>res.data)
+    },
+    riderDeactive:async(id,data)=>{
+        return await axiosInstance.patch(`/rider/riderdeactive/${id}`,{...data}).then(res=>res.data)
+  },
     // list of riders end
 
     // vehicle start
@@ -54,6 +63,12 @@ const apiService={
      },
      getVehicle:async (id) => {
          return await axiosInstance.get(`/vehicle/getvehicle/${id}`).then(res=>res.data)
+     },
+     vehicleActivate: async (id,data) => {
+          return await axiosInstance.patch(`/vehicle/vehicleactivate/${id}`,{...data}).then(res=>res.data);
+     },
+     vehicleDeactivate: async (id,data) => {
+           return await axiosInstance.patch(`/vehicle/vehicledeactivate/${id}`,{...data}).then(res=>res.data);
      },
     // vehicle end
 }

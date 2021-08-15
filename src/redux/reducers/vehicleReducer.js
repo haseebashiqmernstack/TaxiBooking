@@ -62,6 +62,38 @@ import { Vehicle } from "../actiontypes/constants"
                                         message:'not avaiable',
                                         loading:false
                                     }
+                                    case Vehicle.VEHICLE_ACTIVATE:
+                                        return {
+                                            ...state,
+                                            loading:true
+                                        }
+                                        case Vehicle.VEHICLE_ACTIVATE_SUCCESS:
+                                            console.log("from activate success :",action.payload)
+                                             let findVehicle=state.vehicles.find(i=>i._id==action.payload)
+                                             let index=state.vehicles.findIndex(i=>i.id==action.payload)
+                                            findVehicle.active="true"
+                                            state.vehicles[index]=findVehicle
+                                            console.log(findVehicle);
+                                            return {
+                                                ...state,
+                                                loading:false,
+                                                // vehicles:[...state.vehicles,findVehicle]
+                                            }
+                                            case Vehicle.VEHICLE_DEACTIVATE:
+                                                return {
+                                                    ...state,
+                                                    loading:true
+                                                }
+                                                case Vehicle.VEHICLE_DEACTIVATE_SUCCESS:
+                                                    let findnewVehicle=state.vehicles.find(i=>i._id==action.payload)
+                                                    let newindex=state.vehicles.findIndex(i=>i._id==action.payload)
+                                                    console.log(findnewVehicle)
+                                                    findnewVehicle.active="false"
+                                                    state.vehicles[newindex]=findnewVehicle
+                                                    return {
+                                                        ...state,
+                                                        loading:false
+                                                    }
                                     default:
                                         return state;
    }

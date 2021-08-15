@@ -77,3 +77,51 @@ export const GetVehicle=(id)=>{
          }
      }
 }
+
+export const VehicleActivate=(id,data)=>{
+return async (dispatch) => {
+    dispatch({
+        type:Vehicle.VEHICLE_ACTIVATE,
+        payload:''
+    })
+
+    const v_data=await apiService.vehicleActivate(id,data);
+    if(v_data)
+    {
+        dispatch({
+            type:Vehicle.VEHICLE_ACTIVATE_SUCCESS,
+            payload:id
+        })
+    }
+    else{
+        dispatch({
+            type:Vehicle.VEHICLE_ACTIVATE_FAILIURE,
+            paylaod:''
+        })
+    }
+}
+}
+
+export const VehicleDeactivate=(id,data)=>{
+    return async (dispatch) => {
+        dispatch({
+            type:Vehicle.VEHICLE_DEACTIVATE,
+            payload:''
+        })
+    
+        const v_data=await apiService.vehicleDeactivate(id,data);
+        if(v_data)
+        {
+            dispatch({
+                type:Vehicle.VEHICLE_DEACTIVATE_SUCCESS,
+                payload:id
+            })
+        }
+        else{
+            dispatch({
+                type:Vehicle.VEHICLE_DEACTIVATE_FAILIURE,
+                paylaod:''
+            })
+        }
+    }
+    }

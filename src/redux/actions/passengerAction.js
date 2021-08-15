@@ -46,3 +46,49 @@ export const ShowPassenger=()=>{
         }
     }
 }
+
+export const RiderActive=(id,data)=>{
+    return async (dispatch)=>{
+             dispatch({
+                 type:Passenger.PASSENGER_ACTIVATE,
+                 payload:''
+             })
+             const passenger=await apiService.riderActive(id,data);
+             if(passenger!=null)
+             {
+                 dispatch({
+                     type:Passenger.PASSENGER_ACTIVATE_SUCCESS,
+                     payload:id
+                 })
+             }
+             else{
+                 dispatch({
+                     type:Passenger.PASSENGER_ACTIVATE_FAILIURE,
+                     payload:''
+                 })            
+             }
+    }
+}
+
+export const RiderDeactive=(id,data)=>{
+    return async (dispatch)=>{
+             dispatch({
+                 type:Passenger.PASSENGER_DEACTIVATE,
+                 payload:''
+             })
+             const passenger=await apiService.riderDeactive(id,data);
+             if(passenger!=null)
+             {
+                 dispatch({
+                     type:Passenger.PASSENGER_DEACTIVATE_SUCCESS,
+                     payload:id
+                 })
+             }
+             else{
+                 dispatch({
+                     type:Passenger.PASSENGER_DEACTIVATE_FAILIURE,
+                     payload:''
+                 })            
+             }
+    }
+}
